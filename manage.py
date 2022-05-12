@@ -1,47 +1,29 @@
-from __future__ import with_statement
-
-import logging
-from logging.config import fileConfig
-
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-from flask import current_app
-
-from alembic import context
-
-config = context.config
+from app import create_app, db
+from flask_script import Manager, Server
+from app.models import User,Pitch,Comment,Upvote,Downvote
+from  flask_migrate import Migrate, MigrateCommand
 
 
-
-fileConfig(config.config_file_name)
-logger = logging.getLogger('alembic.env')
-
-
-config.set_main_option(
-    'sqlalchemy.url',
-    str(current_app.extensions['migrate'].db.engine.url).replace('%', '%%'))
-target_metadata = current_app.extensions['migrate'].db.metadata
+app = create_app('development')
+migrate = Migrate(app,db)
+manager = Manager(app)
+manager.add_command('server', Server)
+manager.add_command('db',MigrateCommand)
 
 
+@manager.command
+def test():
+    """Run the unit tests"""
+    import unittest
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner(verbosity=2).run(tests)
 
 
-def run_migrations_offline():
-    
-    url = config.get_main_option("sqlalchemy.url")
-    context.configure(
-        url=url, target_metadata=target_metadata, literal_binds=True
-    )
-
-    with context.begin_transaction():
-        context.run_migrations()
+@manager.shell
+def make_shell_context():
+    return dict(app=app, db=db, User=User, Pitch=Pitch,Comment=Comment,Upvote=Upvote,Downvote=Downvote)
 
 
-def run_migrations_online():
-  
 
-    def process_revision_directives(context, revision, directives):
-        if getattr(config.cmd_opts, 'autogenerate', False):
-            script = directives[0]
-            if script.upgrade_ops.is_empty():
-                directives[:] = []
-                logger.info('No changes in schema detected.')
+if __name__ == '__main__':
+    manager.run()
