@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+<marquee behavior="" direction="right"> <h1> Welcome to Pitch World .... All Pitches </h1></marquee>
+</div>
+<div id="tech">
+<div class="container-fluid">
+    <div class="row">
+        {% for category in pitches %}
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+                <h1>{{category.title}}</h1>
+                <p style="font-size: 15px;">{{category.description}}</p>
+                <h4> Category:{{category.category}}</h4>
+                <h5> Post by {{category.user}}</h5>
+                <p><mark>{{category.date_posted}}</mark></p>
+                <button class="btn1"> Like </button>
+                <button class="btn2"> Dislike </button>
+                <a href="/comments/{{category.id}}"> <button class="btn3">Comment</button> </a>
+                </div>
+            </div>
+        </div>
+        {%endfor %}
+    </div>
+</div>
+</div>
+{% endblock %}
