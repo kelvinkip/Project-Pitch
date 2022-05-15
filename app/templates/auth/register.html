@@ -1,0 +1,14 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+<div class="bg" style="height: 100vh; background-color: darkgray;">
+<div class="container" style="background-color: rgb(18, 182, 182);">
+    <marquee behavior="" direction="right"><h1 style="font-weight: bold;color: red;"> New ACCOUNT </h1></marquee>
+            <div class="col-md-8">
+                {{wtf.quick_form(registration_form)}}
+            </div>
+            <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock %}
