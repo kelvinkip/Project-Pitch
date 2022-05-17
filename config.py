@@ -21,18 +21,36 @@ class Config:
 
 
 class ProdConfig(Config):
+    """Production configuration child class
+    Args:
+    Config: The parent configuration class with General configuration settings
+    """
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kibet:KibetFlask@localhost/flask'
+
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")  # or other relevant config var
+    if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+    # rest of connection code using the connection string `uri`
+
+
+class TestConfig(Config):
+    """"""
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
-   
-    uri = os.getenv('DATABASE_URL')
-    if uri and uri.startswith('postgres://'):
-     uri = uri.replace('postgres://', 'postgresql://', 1)
-    SQLALCHEMY_DATABASE_URI=uri
-   
-    
+
+
 class DevConfig(Config):
-   
+    """Development configuration child class
+    Args:
+        Config: The parent configuration class with General configuration settings
+    """
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
+
     DEBUG = True
+
+
 config_options = {
-'development':DevConfig,
-'production':ProdConfig,
+
+    'development': DevConfig,
+    'production': ProdConfig,
+    'test':TestConfig
 }
