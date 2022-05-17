@@ -28,13 +28,14 @@ class ProdConfig(Config):
         Config - this is the parent config class from which we inherit its properties
 
     """
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
    
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
-    uri = os.getenv('DATABASE_URL')
-    if uri and uri.startswith('postgres://'):
-     uri = uri.replace('postgres://', 'postgresql://', 1)
-    SQLALCHEMY_DATABASE_URI=uri
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
+    # uri = os.getenv('DATABASE_URL')
+    # if uri and uri.startswith('postgres://'):
+    #  uri = uri.replace('postgres://', 'postgresql://', 1)
+    # SQLALCHEMY_DATABASE_URI=uri
 class DevConfig(Config):
     '''
     Development  configuration child class
