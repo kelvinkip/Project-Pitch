@@ -4,7 +4,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:kelvin@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vzypakasnjxkfw:cd710d5ddeaad232d56320bcbed04e25718917241455ef728eee2d7ff059cb6b@localhost/de6nhikq8edmsc'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY = os.environ.get('FlSkPItchA@*ppL')
     UPLOADED_PHOTOS_DEST = "app/static/photos" 
