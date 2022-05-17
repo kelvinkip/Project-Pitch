@@ -1,3 +1,6 @@
+# from crypt import methods
+# from msilib import CAB
+# from unicodedata import category
 from flask import render_template,request,redirect,url_for,abort
 from .. models import User,Pitch,Upvotes,Downvotes,Comments
 from . import main
@@ -43,12 +46,10 @@ def new_comments(pitch_id):
     form = CommentForm()
     if form.validate_on_submit():
         comment = form.comment.data      
-        new_comment = Comments(comment=comment, pitch_id=pitch_id, user_id=current_user.get_id())
+        new_comment = Comments(text=comment, pitch_id=pitch_id, user_id=current_user.get_id())
         new_comment.save_comment()
-        return redirect(url_for('main.index',pitch_id = pitch_id))
 
-    return render_template('comments.html',Commentform=form, comments=comments, pitches = pitches, user=user)
-
+    return render_template('comments.html',Commentsform=form, comments=comments, pitches = pitches, user=user)
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
