@@ -4,7 +4,7 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vzypakasnjxkfw:cd710d5ddeaad232d56320bcbed04e25718917241455ef728eee2d7ff059cb6b@localhost/de6nhikq8edmsc'
+    SQLALCHEMY_DATABASE_URI = 'postgres://vzypakasnjxkfw:cd710d5ddeaad232d56320bcbed04e25718917241455ef728eee2d7ff059cb6b@ec2-3-229-11-55.compute-1.amazonaws.com:5432/de6nhikq8edmsc'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY = os.environ.get('FlSkPItchA@*ppL')
     UPLOADED_PHOTOS_DEST = "app/static/photos" 
@@ -30,9 +30,11 @@ class ProdConfig(Config):
     # uri = os.environ.get("DATABASE_URL")  # or other relevant config var
     # if uri.startswith("postgres://"):
     #     uri = uri.replace("postgres://", "postgresql://", 1)
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
-
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:just@localhost/beem'
+    uri = os.getenv('DATABASE_URL')
+    if uri and uri.startswith('postgres://'):
+     uri = uri.replace('postgres://', 'postgresql://', 1)
+    SQLALCHEMY_DATABASE_URI=uri
 class DevConfig(Config):
     '''
     Development  configuration child class
