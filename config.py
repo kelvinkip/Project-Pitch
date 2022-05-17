@@ -7,7 +7,6 @@ class Config:
 
     '''
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vzypakasnjxkfw:cd710d5ddeaad232d56320bcbed04e25718917241455ef728eee2d7ff059cb6b@ec2-3-229-11-55.compute-1.amazonaws.com:5432/de6nhikq8edmsc'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY ='FlSkPItchA@*ppL'
     UPLOADED_PHOTOS_DEST = "app/static/photos" 
