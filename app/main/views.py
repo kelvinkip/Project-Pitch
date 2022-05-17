@@ -1,6 +1,3 @@
-# from crypt import methods
-# from msilib import CAB
-# from unicodedata import category
 from flask import render_template,request,redirect,url_for,abort
 from .. models import User,Pitch,Upvotes,Downvotes,Comments
 from . import main
