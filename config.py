@@ -4,12 +4,10 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kelvin:1234@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:kelvin@localhost/pitches'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY = os.environ.get('FlSkPItchA@*ppL')
-    UPLOADED_PHOTOS_DEST = "app/static/photos"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    
+    UPLOADED_PHOTOS_DEST = "app/static/photos" 
 
     #email 
     MAIL_SERVER = "smtp.gmail.com"
