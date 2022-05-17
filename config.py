@@ -25,7 +25,7 @@ class ProdConfig(Config):
     Args:
     Config: The parent configuration class with General configuration settings
     """
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kibet:KibetFlask@localhost/flask'
+   
 
     SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")  # or other relevant config var
     if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
