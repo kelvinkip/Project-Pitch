@@ -15,7 +15,7 @@ This is a Web Application that allows a user to pitch and comment on them.
 <li>git clone<a>https://github.com/kelvinkip/Project-Pitch.git</a></li>
 <li>code . for VS code to run it</li>
 <li>Go to terminal & run python3 manage.py server..
-copy the link on your terminal to browser</li>
+copy the link on your terminal to browser.</li>
 </ul>
 
 ### Live Link
