@@ -6,7 +6,7 @@ class Config:
     General configuration parent class
 
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:manage@localhost/pitch'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY ='FlSkPItchA@*ppL'
     UPLOADED_PHOTOS_DEST = "app/static/photos" 
@@ -35,7 +35,7 @@ class ProdConfig(Config):
 
 class TestConfig(Config):
     """"""
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:manage@localhost/pitch'
 
 
 class DevConfig(Config):
@@ -43,7 +43,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     """
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:run@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:manage@localhost/pitch'
 
     DEBUG = True
 
